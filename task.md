@@ -12,7 +12,7 @@
     - [x] Implementar operações aritméticas padrão (+, -, *, /)
     - [x] Gerenciar o estado das operações
 - [ ] **Integração com IA**
-    - [ ] Desenhar interface de entrada de IA (entrada de texto para linguagem natural)
+    - [x] Desenhar interface de entrada de IA (entrada de texto para linguagem natural)
     - [ ] Integrar com API de IA (ex: Gemini) para resolver problemas matemáticos
 - [ ] **Refinamento & Otimização**
     - [ ] Adicionar micro-animações e transições

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './App.css';
 import Display from './components/Display';
 import Keypad from './components/Keypad';
+import AIInput from './components/AIInput';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 function App() {
   // Estados para gerenciar a lógica da calculadora
@@ -9,6 +11,8 @@ function App() {
   const [expression, setExpression] = useState('');
   const [waitingForOperand, setWaitingForOperand] = useState(false);
   const [operator, setOperator] = useState<string | null>(null);
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
+  const [isAILoading, setIsAILoading] = useState(false);
 
   /**
    * Manipula a entrada de números
@@ -83,10 +87,48 @@ function App() {
   };
 
   /**
-   * Função de demonstração para a funcionalidade de IA.
+   * Função para processar solicitações da IA usando a API da Gemini.
+   */
+  const handleSolveAI = async (prompt: string) => {
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+    if (!apiKey) {
+      alert('Chave de API da Gemini não encontrada. Por favor, configure VITE_GEMINI_API_KEY no arquivo .env');
+      setIsAIModalOpen(false);
+      return;
+    }
+
+    setIsAILoading(true);
+    try {
+      const genAI = new GoogleGenerativeAI(apiKey);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      const systemPrompt = "Você é uma calculadora inteligente. O usuário fornecerá um problema matemático em linguagem natural. Sua resposta deve ser APENAS o número final resultante do cálculo, sem textos extras ou explicações. Se houver erro, responda 'Erro'.";
+
+      const result = await model.generateContent([systemPrompt, prompt]);
+      const response = await result.response;
+      const text = response.text().trim();
+
+      if (text !== 'Erro') {
+        setDisplayValue(text);
+        setExpression(prompt);
+      } else {
+        setDisplayValue('Erro');
+      }
+    } catch (error) {
+      console.error("Erro na IA:", error);
+      setDisplayValue('Erro');
+    } finally {
+      setIsAILoading(false);
+      setIsAIModalOpen(false);
+    }
+  };
+
+  /**
+   * Abre o modal de entrada da IA.
    */
   const handleAI = () => {
-    alert('Integração com IA em breve!');
+    setIsAIModalOpen(true);
   };
 
   return (
@@ -118,6 +160,14 @@ function App() {
         onCalculate={handleCalculate}
         onAI={handleAI}
       />
+
+      {isAIModalOpen && (
+        <AIInput
+          onClose={() => setIsAIModalOpen(false)}
+          onSolve={handleSolveAI}
+          isLoading={isAILoading}
+        />
+      )}
     </div>
   );
 }
