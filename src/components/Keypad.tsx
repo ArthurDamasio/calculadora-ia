@@ -8,7 +8,12 @@ interface KeypadProps {
     onAI: () => void;
 }
 
+/**
+ * Componente Keypad: Responsável por renderizar todos os botões da calculadora.
+ * Gerencia a renderização em grid e as ações de clique.
+ */
 const Keypad: React.FC<KeypadProps> = ({ onNumber, onOperator, onClear, onCalculate, onAI }) => {
+    // Definição de todos os botões e suas respectivas ações
     const buttons = [
         { label: 'C', action: onClear, type: 'special' },
         { label: 'AI', action: onAI, type: 'ai' },
