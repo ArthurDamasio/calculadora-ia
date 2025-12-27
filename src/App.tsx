@@ -78,7 +78,7 @@ function App() {
       setOperator(null); // Limpa o operador
       setWaitingForOperand(true); // Prepara para uma nova operação ou entrada
     } catch (error) {
-      setDisplayValue('Error'); // Exibe 'Error' em caso de falha no cálculo
+      setDisplayValue('Erro'); // Exibe 'Erro' em caso de falha no cálculo
     }
   };
 
@@ -104,7 +104,7 @@ function App() {
         fontWeight: 700,
         textAlign: 'center'
       }}>
-        AI CALCULATOR
+        CALCULADORA IA
       </h1>
 
       {/* Componente Display para mostrar o valor atual e a expressão */}

@@ -1,20 +1,20 @@
-# AI Calculator Project Plan
+# Plano do Projeto Calculadora IA
 
-- [ ] **Project Initialization**
-    - [ ] Initialize Vite project (React + TypeScript)
-    - [ ] Setup basic folder structure
-    - [ ] Configure Vanilla CSS variables for theming (Colors, Typography)
-- [ ] **Core Calculator UI**
-    - [ ] Design the main calculator layout (Glassmorphism style)
-    - [ ] Implement Display component (Input/Output)
-    - [ ] Implement Keypad component
-- [ ] **Calculator Logic**
-    - [ ] Implement standard arithmetic operations (+, -, *, /)
-    - [ ] Handle state management for calculations
-- [ ] **AI Integration**
-    - [ ] Design AI input interface (Text input for natural language)
-    - [ ] Integrate with AI API (e.g., Gemini) for solving math problems
-- [ ] **Polish & Optimization**
-    - [ ] Add micro-animations and transitions
-    - [ ] Ensure responsive design for mobile and desktop
-    - [ ] SEO optimization (Title, Meta tags)
+- [x] **Inicialização do Projeto**
+    - [x] Inicializar projeto Vite (React + TypeScript)
+    - [x] Configurar estrutura básica de pastas
+    - [x] Configurar variáveis CSS Vanilla para temas (Cores, Tipografia)
+- [x] **Interface Core da Calculadora**
+    - [x] Desenhar o layout principal (estilo Glassmorphism)
+    - [x] Implementar componente Display (Entrada/Saída)
+    - [x] Implementar componente Keypad (Teclado)
+- [x] **Lógica da Calculadora**
+    - [x] Implementar operações aritméticas padrão (+, -, *, /)
+    - [x] Gerenciar o estado das operações
+- [ ] **Integração com IA**
+    - [ ] Desenhar interface de entrada de IA (entrada de texto para linguagem natural)
+    - [ ] Integrar com API de IA (ex: Gemini) para resolver problemas matemáticos
+- [ ] **Refinamento & Otimização**
+    - [ ] Adicionar micro-animações e transições
+    - [ ] Garantir design responsivo para mobile e desktop
+    - [ ] Otimização SEO (Título, Meta tags)
